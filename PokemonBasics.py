@@ -1,3 +1,4 @@
+import pypokedex
 pokedex = [
     ["name", "type1", "type2"],
     ["Bulbasaur", "grass", "poison"],
@@ -28,14 +29,15 @@ class move:
 
 class Pokemon:
     def __init__(self, dexnum, level, moveset):
-        self.name = pokedex[dexnum][0]
-        self.type1 = pokedex[dexnum][1]
-        self.type2 = pokedex[dexnum][2]
+        self.dexnum=dexnum
+        self.name = pypokedex.get(dex=dexnum).name
+        self.types = pypokedex.get(dex=7).types
+
         self.lvl = level
         self.moveset = moveset
 
     def __str__(self):
-        return self.name + ", " + self.type1 + ", " + self.type2 + ", " + str(self.lvl)
+        return self.name + ", " + str(self.types)+ ", " + str(self.lvl)
 
 
 Tackle = move("Tackle", "Normal", "physical", 40, 100)
@@ -51,7 +53,7 @@ class MoveSet:
             "Moves:\n1:" + str(self.Moveset[0]) + "     2:" + str(self.Moveset[1]) + "\n3:" + str(self.Moveset[2]) +
             "     4:" + str(self.Moveset[3]) + "\n")
 
-
+"""
 jmoves = MoveSet(Tackle, Take_Down, Tackle, Take_Down)
 
 jeremy = Pokemon(2, 84, jmoves)
@@ -61,3 +63,5 @@ print(jmoves)
 print(434)
 N = Pokemon(5, 34, [])
 print(N)
+
+"""
